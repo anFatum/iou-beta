@@ -30,7 +30,7 @@ const NotificationStack = () => {
 
     return <>
         <ToastContainer className="p-3" position='top-end'>
-            {globalState.notificationReducer.notifications.map((notification, idx) => {
+            {globalState.notificationReducer?.notifications.map((notification, idx) => {
                 const config = notificationConfig(notification);
                 return <Toast
                     key={idx}
