@@ -5,6 +5,8 @@ from flask import request
 from app.iou.utils.dto import IOUDto
 from app.iou.services.iou import get_iou
 from app.core.utils.logger import get_logger
+from app.core.utils.number_utils import convert_to_number
+from app.configs import Configs
 from decimal import Decimal
 from app import socketio
 
@@ -28,7 +30,8 @@ class IOUCalc(Resource):
         Creates an account for a user (if admin role can create account for any user)
         """
         iou = get_iou(request.json)
-        iou = iou.quantize(Decimal('1.000'))
+        decimal_places = convert_to_number(Configs.DECIMAL_PRECISION, number_class=int)
+        iou = iou.quantize(Decimal('1.' + ('0' * decimal_places)))
         return {"iou": iou}, HTTPStatus.OK
 
 

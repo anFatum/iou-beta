@@ -12,6 +12,7 @@ class Configs:
 
     SECRET_KEY = os.getenv("SECRET_KEY", "secret")
     CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
+    DECIMAL_PRECISION = os.getenv("DECIMAL_PRECISION",  3)
 
 
 class DevelopmentConfigs(Configs):

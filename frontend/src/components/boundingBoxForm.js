@@ -21,9 +21,10 @@ function BoundingBoxForm() {
             });
             setCurrentIOU(response.data.iou);
         } catch (err) {
+            console.log(err);
             dispatch(enqueueNotification({
                 notificationType: "error",
-                notificationMessage: err
+                notificationMessage: err.response?.data?.message || "An error occurred"
             }))
         }
         setIsLoading(false);
@@ -39,7 +40,7 @@ function BoundingBoxForm() {
                 <Button
                     onClick={() => handleCalcIOU()}
                 >Calc IOU</Button>
-                <h5>Calculated IOU: {currentIOU}</h5>
+                <h5 className={'pt-3'}>Calculated IOU: {currentIOU}</h5>
             </Form>
         </>
     );
