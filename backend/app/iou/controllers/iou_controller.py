@@ -17,7 +17,7 @@ logger = get_logger("app")
 @api.route("")
 class IOUCalc(Resource):
 
-    @api.doc("open_account",
+    @api.doc("calculate_iou",
              responses={
                  HTTPStatus.BAD_REQUEST: "Bad Request"
              },
@@ -27,7 +27,7 @@ class IOUCalc(Resource):
                       code=HTTPStatus.OK)
     def post(self):
         """
-        Creates an account for a user (if admin role can create account for any user)
+        Endpoint calculates and IOU for provided data
         """
         iou = get_iou(request.json)
         decimal_places = convert_to_number(Configs.DECIMAL_PRECISION, number_class=int)
