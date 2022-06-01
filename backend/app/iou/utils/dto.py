@@ -2,7 +2,7 @@ from flask_restplus import Namespace, fields
 
 
 class IOUDto:
-    api = Namespace("IOU API", path="/iou", description="Account related operations")
+    api = Namespace("IOU API", path="/iou", description="IOU related operations")
     coordinates_model = api.model("Coordinates", {
         "left": fields.Float(required=True),
         "top": fields.Float(required=True),

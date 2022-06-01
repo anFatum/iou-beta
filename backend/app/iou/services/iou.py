@@ -52,7 +52,25 @@ def calc_iou(bb1, bb2):
     return iou
 
 
-def get_iou(data) -> Decimal:
+def get_iou(data: dict) -> Decimal:
+    """
+    Validates the input for IOU - see CoordinatesValidator for details
+    Aborts with BAD REQUEST if hasn't passed the validation
+
+    Parameters
+    ----------
+    data : dict
+        Keys: {'ground_truth', 'predicted'}
+        Both are dicts with coordinates:
+        Keys: {'left', 'right', 'top', 'bottom'}
+        The (left, top) position is at the top left corner,
+        the (right, bottom) position is at the bottom right corner
+
+    Returns
+    -------
+    float
+        in [0, 1]
+    """
     try:
         bb1 = CoordinatesValidator().validate(data.get("ground_truth"))
         bb2 = CoordinatesValidator().validate(data.get("predicted"))
