@@ -17,7 +17,6 @@ const BoundingBoxCoords = (props) => {
     const {dispatch} = useContext(StoreContext);
 
     useEffect(() => {
-        console.log(boxType);
         dispatch(setBoundingBox(currentIou, boxType));
     }, [currentIou])
 

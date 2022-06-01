@@ -28,8 +28,6 @@ const NotificationStack = () => {
         }
     }
 
-    console.log(globalState.notificationReducer?.notifications);
-
     return <>
         <ToastContainer className="p-3" position='top-end'>
             {globalState.notificationReducer?.notifications.map((notification, idx) => {

@@ -21,7 +21,6 @@ function BoundingBoxForm() {
             });
             setCurrentIOU(response.data.iou);
         } catch (err) {
-            console.log(err);
             dispatch(enqueueNotification({
                 notificationType: "error",
                 notificationMessage: err.response?.data?.message || "An error occurred"
